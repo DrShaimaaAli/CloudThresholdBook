@@ -1,0 +1,12 @@
+{
+  "name": "verifyemail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "verifyEmail.js",
+  "scripts": {
+    "start": "node verifyEmail.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "sendverificationemail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sendVerificationEmail.js",
+  "scripts": {
+     "start": "node verifyEmail.js"
+    },
+  "dependencies": {
+    "nodemailer": "^6.7.2",
+    "express": "^4.17.3"
+  }
+}
