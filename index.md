@@ -23,6 +23,8 @@
 
 [Chapter 9: Cloud Migration](./Ch9-Migration.md)
 
+[Bibliography](./Bibliography.md)
+
 
 #### Cover Image Citations
 
