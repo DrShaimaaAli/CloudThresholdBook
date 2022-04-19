@@ -92,7 +92,7 @@ Go to [Docker Hub](https://hub.docker.com/) and click on the &#39;Explore&#39; l
 
 1. Open an SSH connection to &#39;docker-test-instance&#39;.
 2. To download an image from Docker&#39;s hub, we need to issue the command docker pull \&lt;image-name\&gt;; running this command requires &#39;superuser&#39; privileges, so we also need to precede it by &#39;sudo&#39;. So the final command to execute should be:
-$ sudo docker pull hello-world
+`$ sudo docker pull hello-world`
 3. Figure 5.7 below shows the output after running the pull command. There are a few things to note about the last line of that output:
 
 - **docker.io;** this is the address for docker-registry; since we didn&#39;t specify any other registry, the pull command looks for the requested image in docker&#39;s public registry.
@@ -104,26 +104,26 @@ $ sudo docker pull hello-world
 
 Figure 5.7: pulling hello-world container image
 
-1. In order to list all the images that we have locally, we can use the &#39;images&#39; command
-$ sudo docker images
- As you can see in figure 5.8, we only have that one container image that we just pulled.
+4. In order to list all the images that we have locally, we can use the `images` command
+   `$ sudo docker images`
+    As you can see in figure 5.8, we only have that one container image that we just pulled.
 
 ![Local docker images](pictures/Picture5.8.png)
 
 Figure 5.8: Local docker images
 
-1. To create a container based on that image and execute it, we need to issue the &#39;run&#39; command and give it the image&#39;s name:
-$ sudo docker run hello-world
+5. To create a container based on that image and execute it, we need to issue the `run` command and give it the image name:
+`$ sudo docker run hello-world`
  You can see the output starts with the &quot;Hello from Docker!&quot; message, then illustrate the purpose of having this image available, which is to verify that our docker installation was done correctly and all the listed steps were executed with no problems. We are going to follow the suggestion of trying something more ambitious shortly after examining the container created by listing it using the ps command in the next step.
 
 ![creating and executing a container](pictures/Picture5.9.png)
 
 Figure 5.9: creating and executing a container
 
-The ps command, without any options, is used to list the containers &#39;running&#39; on the system. If we tried it, we wouldn&#39;t see any containers running because the image we just executed was terminated right after it finished executing the program it encapsulates. However, the &#39;-a&#39; option of the ps command allows us to see all containers regardless of whether they are running.
+The `ps` command, without any options, is used to list the containers "running" on the system. If we tried it, we wouldn&#39;t see any containers running because the image we just executed was terminated right after it finished executing the program it encapsulates. However, the `-a` option of the ps command allows us to see all containers regardless of whether they are running.
 
-1. Before issuing the ps command, let&#39;s create and execute another container based on the hello-world image by reissuing the run command $ sudo docker run hello-world
-2. Figure 5.10 shows the output of the command $ sudo docker ps, which is an empty list as expected, followed by the output of the command $ sudo docker ps -a. As you can see, every time we issue the run command, a new container is created, and it&#39;s given a unique id (the first column) and a unique name (the last column).
+6. Before issuing the ps command, let&#39;s create and execute another container based on the hello-world image by reissuing the run command $ sudo docker run hello-world
+7. Figure 5.10 shows the output of the command $ sudo docker ps, which is an empty list as expected, followed by the output of the command $ sudo docker ps -a. As you can see, every time we issue the run command, a new container is created, and it&#39;s given a unique id (the first column) and a unique name (the last column).
 
 ![Listing containers](pictures/Picture5.10.png)
 
@@ -170,6 +170,7 @@ The Dockerfile would contain any number of lines with the format &#39;INSTRUCTIO
 
 1. Open the dockerfile for editing  `$ vi Dockerfile`
 2. Press &#39;i&#39; on the keyboard to start the &#39;insert&#39; mode and insert these two lines
+
 ```
   - FROM ubuntu
   - CMD echo "hello from <your-name>";
@@ -201,9 +202,13 @@ In order to make this image available for others to use, or to be available for 
 3. Create a public repository with the name of the image. In this exercise, the name should be &#39;hello-from-me&#39;.
 4. Go back to the terminal of &quot;docker-test-instance&quot;.
 5. Create a tag for the image that includes your Docker ID using the docker image tag command
-$ sudo docker image tag \&lt;image-name[:tag]\&gt; \&lt;your-account-repo\&gt;/\&lt;project&#39;s-repo\&gt;
- my command would look like this
-$ sudo docker image tag hello-from-me shaimaaali/hello-from-me
+
+  `$ sudo docker image tag <image-name[:tag]> <your-account-repo> <project-repo>`
+
+    my command would look like this
+ 
+  `$ sudo docker image tag hello-from-me shaimaaali/hello-from-me`
+
 6. If you list the images, you can see that two lines appear for images with the same ID but with a different value under the repository column.
 
 ![Preparing the image to be pushed to docker.io](pictures/Picture5.15.png)
@@ -249,6 +254,7 @@ In this script, we created a small web application using &#39;express&#39; the J
 This application has two dependencies that need to be specified and installed before it can run. Dependencies of Node.js applications are stored in a file named package.json, so we&#39;ll need to create this file as part of our application.
 
 1. Create a file with this name and write the following JSON object in it.
+
 ```
       {
         "name": "hello-i-am-here",
@@ -259,11 +265,11 @@ This application has two dependencies that need to be specified and installed be
           "os": "^0.1.1"
         }
       }
-
 ```
 Listing 5.2: package.json file for hello-i-am-here app
 
 1. Create a Dockerfile with the following instructions.
+
 ```
     From node:latest 
     WORKDIR /usr/src/web-apps/hello-i-am-here 
@@ -273,6 +279,9 @@ Listing 5.2: package.json file for hello-i-am-here app
     EXPOSE 8080 
     ENTRYPOINT ["node" , "index.js"]
 ```
+
+Listing 5.3: Dockerfile for hello-i-am-here app
+
 2. We can now build the image using the following command `$ sudo docker build --tag hello-i-am-here .`
 
     - This time, we will not pull the image beforehand; we&#39;ll leave the build command to do that for us

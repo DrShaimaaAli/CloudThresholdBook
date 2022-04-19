@@ -223,6 +223,7 @@ The third way to access your cloud resources is programmatically using the googl
 We&#39;ll use one of the scripts provided as a sample in GCP docs here ([Node.js client library  |  Google Cloud](https://cloud.google.com/nodejs/docs/reference/compute/latest)). If you click on the link and scroll down to the &#39;Samples&#39; section, you&#39;ll see a list of sample scripts. You can see the code by clicking on the &#39;source code&#39; link provided. We will be using the &#39;List All instances&#39; script, so open its source code and have a look at it.
 
 ![Sample JS Scripts](pictures/Picture2.19.png)
+
 Figure 2.19: Sample JS Scripts
 
 We are going to try to run this script from the local machine. But first, we need to make some preparation. We need to install the npm module of the google client library API that allows us to access the compute instances programmatically. We can do this using the following steps.
@@ -238,6 +239,7 @@ progAccess\&gt; node listAllVMs.js \&lt;project-id\&gt;
 The figure below demonstrates how I ran the command and its output.
 
 ![VM instances accessed and listed programmatically](pictures/Picture2.20.png)
+
 Figure 2.20: VM instances accessed and listed programmatically
 
 Please note that Node.js is not the only way to access GCP services programmatically. You can see a list of client libraries for other languages [here](https://cloud.google.com/apis/docs/cloud-client-libraries), and you can find the documentation for the compute engine Node.js client [here](https://googleapis.dev/nodejs/compute/latest/index.html).
