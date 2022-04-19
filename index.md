@@ -11,7 +11,7 @@
 
 [Chapter 3: Architecture Design for Cloud Applications](./Content/Ch3-Architecture.md)
 
-[Chapter 4: IaaS and PaaS Deployments](.Content/Ch4-IaaSandPaaS.md)
+[Chapter 4: IaaS and PaaS Deployments](./Content/Ch4-IaaSandPaaS.md)
 
 [Chapter 5: Introduction to Containerization](./Content/Ch5-Containerization.md)
 
