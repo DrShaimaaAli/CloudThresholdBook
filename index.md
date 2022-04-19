@@ -5,25 +5,25 @@
 
 [Preface](./Preface.md)
 
-[Chapter 1: Introduction](./Ch1-Introduction.md)
+[Chapter 1: Introduction](./Content/Ch1-Introduction.md)
 
-[Chapter 2: The Basics](./Ch2-TheBasics.md)
+[Chapter 2: The Basics](./Content/Ch2-TheBasics.md)
 
-[Chapter 3: Architecture Design for Cloud Applications](./Ch3-Architecture.md)
+[Chapter 3: Architecture Design for Cloud Applications](./Content/Ch3-Architecture.md)
 
-[Chapter 4: IaaS and PaaS Deployments](./Ch4-IaaSandPaaS.md)
+[Chapter 4: IaaS and PaaS Deployments](.Content/Ch4-IaaSandPaaS.md)
 
-[Chapter 5: Introduction to Containerization](./Ch5-Containerization.md)
+[Chapter 5: Introduction to Containerization](./Content/Ch5-Containerization.md)
 
-[Chapter 6: Container-based Deployments using Kubernetes Orchestration](./Ch6-Orchesteration.md)
+[Chapter 6: Container-based Deployments using Kubernetes Orchestration](./Content/Ch6-Orchesteration.md)
 
-[Chapter 7: DevOps and Cloud Deploymnets](./Ch7-DevOps.md)
+[Chapter 7: DevOps and Cloud Deploymnets](./Content/Ch7-DevOps.md)
 
-[Chapter 8: Serverless Deployments](./Ch8-Serverless.md)
+[Chapter 8: Serverless Deployments](./Content/Ch8-Serverless.md)
 
-[Chapter 9: Cloud Migration](./Ch9-Migration.md)
+[Chapter 9: Cloud Migration](./Content/Ch9-Migration.md)
 
-[Bibliography](./Bibliography.md)
+[Bibliography](./Content/Bibliography.md)
 
 
 #### Cover Image Citations
