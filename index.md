@@ -1,4 +1,4 @@
-![Cloud Computing Threshold for Software Engineers](Cover.png)
+![Cloud Computing Threshold for Software Engineers](./Cover.png)
 
 
 # Table of Content
