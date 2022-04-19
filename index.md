@@ -25,6 +25,7 @@
 
 [Bibliography](./Content/Bibliography.md)
 
+[Link to the book's public repo](https://github.com/DrShaimaaAli/CloudThresholdBook.git) ( https://github.com/DrShaimaaAli/CloudThresholdBook.git )
 
 #### Cover Image Citations
 
