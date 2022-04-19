@@ -150,7 +150,8 @@ Figure 7.4: Two containerized versions of the hello-i-am-here app
 
 4. Start the VM instance, which has kubectl already installed docker-test-instance.
 5. This time we&#39;ll create the cluster via gcloud for a change, the command below creates a cluster named yaml-test with 2 nodes in us-central1-a
-`$ gcloud container clusters create yaml-test --num-nodes 2 --zone us-central1-a`
+
+    `$ gcloud container clusters create yaml-test --num-nodes 2 --zone us-central1-a`
 
 After the creation of the cluster is completed, we should receive a confirmation message, as shown below.
 
@@ -159,7 +160,14 @@ After the creation of the cluster is completed, we should receive a confirmation
 Figure 7.5: Cluster created through command line
 
 6. Create a file with a name that ends with .yaml extension and include the specifications provided in listing 7.1.
-7. In order to create the deployment, we can use the command kubectl create -f \&lt;file.yaml\&gt; or kubectl apply -f \&lt;file.yaml\&gt;, here we&#39;re going to use apply since it can be used to update the configurations as well.
+7. In order to create the deployment, we can use the command 
+
+`kubectl create -f <file.yaml>` 
+or 
+`kubectl apply -f <file.yaml>` 
+
+here we&#39;re going to use apply since it can be used to update the configurations as well.
+
 8. We can see in the figure below that the deployment and the pod were created as expected.
 
 ![pictures/Picture7.5.png](pictures/Picture7.6.png)
@@ -168,8 +176,8 @@ Figure 7.6: Deployment and pod objects created using a YAML file
 
 9. Now let&#39;s create a service. Just like the deployment, a service is a Kubernetes object that can be described and created using a YAML file.
 
-  - The pods used for this service will be selected using the value of the selector property, so this value needs to match the label we specified in the template&#39;s metadata.
-  - The ports list specifies all the ports configuration for the service. The targetPort is the port that&#39;s exposed by the container/the pod, which needs to match the port number that the application is listening at, while the port property is the port number we want the service to listen at (i.e. for the requests received from the outside world).
+   - The pods used for this service will be selected using the value of the selector property, so this value needs to match the label we specified in the template&#39;s metadata.
+   - The ports list specifies all the ports configuration for the service. The targetPort is the port that&#39;s exposed by the container/the pod, which needs to match the port number that the application is listening at, while the port property is the port number we want the service to listen at (i.e. for the requests received from the outside world).
 
       ```
         kind: Service
