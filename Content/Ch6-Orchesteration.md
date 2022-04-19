@@ -139,11 +139,11 @@ In the following set of steps, we will create a **deployment** and look into the
 
 1. The following command instructs Kubernetes to pull the image from docker hub and run the container on one pod
 
-    `$ kubectl create deployment **<deployment-name>** --image= **<container-image>** --port 8080`
+    `$ kubectl create deployment <deployment-name> --image= <container-image> --port 8080`
 
     So, if we want to deploy the container image we created in chapter 5 using Kubernetes, and we decided to give the deployment the name &#39;hello-deployment&#39;; the command should look like this:
 
-    `$ kubectl create deployment **hello-deployment** --image= **docker.io/shaimaaali/hello-i-am-here** --port 8080`
+    `$ kubectl create deployment hello-deployment --image= docker.io/shaimaaali/hello-i-am-here --port 8080`
 
 2. The following command displays the available pods. $ kubectl get pods
 3. It might take some time before the pod is ready, so if under the &#39;Ready&#39; column, you see &#39;0/1&#39;, it means that we have one container in this pod, but it&#39;s not ready yet. Re-run the command again after a few moments to see if it&#39;s ready; the value under the status column should be &#39;Running&#39; then.
@@ -154,7 +154,7 @@ Figure 6.13: One pod deployed to the cluster
 
 4. The application in the image is a web application that listens to requests coming through port 8080, so we need to tell Kubernetes to expose that port in the cluster. In that, we would be creating a &#39; **service**&#39; with a load balancer that redirects the requests it receives to the port 8080 of the nodes which is sent to the pod, then finally to the hosted containers.
 
-    `$ kubectl expose deployment **<deployment-name>** --type=LoadBalancer --port 8080`
+    `$ kubectl expose deployment <deployment-name> --type=LoadBalancer --port 8080`
 
 5. You can see the exposed services if you run the command `$ kubectl get services`
 
@@ -194,7 +194,9 @@ In this chapter, we learned the basics of container-based deployment using the m
 
 # Image Credits
 
-[1] [Image](https://commons.wikimedia.org/wiki/File:Wikibase_RL_dependency_graph_new.png) by [Amir Sarabadani (WMDE)](https://commons.wikimedia.org/wiki/User:Amir_Sarabadani_(WMDE)) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en). [2] [&quot;Rio de la Plata outward bound on the River Thames&quot;](https://www.flickr.com/photos/40686262@N05/5867859196) by [L2F1](https://www.flickr.com/photos/40686262@N05) is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&amp;atype=rich).
+[1] [Image](https://commons.wikimedia.org/wiki/File:Wikibase_RL_dependency_graph_new.png) by [Amir Sarabadani (WMDE)](https://commons.wikimedia.org/wiki/User:Amir_Sarabadani_(WMDE)) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en). 
+
+[2] [&quot;Rio de la Plata outward bound on the River Thames&quot;](https://www.flickr.com/photos/40686262@N05/5867859196) by [L2F1](https://www.flickr.com/photos/40686262@N05) is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&amp;atype=rich).
 
 [GCP Screenshots] &quot;Google and the Google logo are registered trademarks of Google LLC, used with permission.&quot;
 
