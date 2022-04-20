@@ -22,7 +22,7 @@ The chapters in the book start with the most basic concepts and gradually build 
 
 ## Hands-On
 
-Every chapter has a set of hands-on exercises as examples of the concepts discussed in the chapter. The instructors can review and update the exercises to make sure they work before handing the chapters to the students.
+Every chapter has a set of hands-on exercises using Google Cloud Plateform as examples of the concepts discussed in the chapter. The instructors can review and update the exercises to make sure they work before handing the chapters to the students.
 
 ## About the author
 

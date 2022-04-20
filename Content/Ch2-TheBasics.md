@@ -1,8 +1,4 @@
 # **Chapter 2: The Basics**
-
-**Abstract**
-In this chapter we&#39;ll discuss the concept of virtualization that allowed cloud computing to happen and we&#39;ll work with basic virutalized compute and storage resources !
-
 # 2.1 Learning Outcomes
 By the end of this chapter, the reader should be able to:
 - Recognize the underlying technologies that made access to cloud services possible

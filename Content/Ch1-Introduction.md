@@ -1,9 +1,4 @@
 # **Chapter 01 - Introduction**
-
- **Abstract** 
-
-This Chapter introduces the idea of cloud computing, how did it come to existence? How is it used? and what characteristics does it have? 
-
 # 1.1 Learning Outcomes
 By the end of this chapter, the reader should be able to:
 - Identify the concept of cloud computing.

@@ -1,10 +1,5 @@
 # **Chapter 3: Architecture Design for Cloud Applications**
 
-
-**Abstract**
-
-This chapter outlines the architectural design needs for creating a cloud based application. It lists ten of the popular disgn pattern that can be useful for cloud application as well as the deployment options that need to be considered in the design.
-
 # 3.1 Learning Outcomes
 By the end of this chapter, the reader should be able to:
 - Recognize common architectural patterns.

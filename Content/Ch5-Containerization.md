@@ -1,10 +1,4 @@
-
 # **Chapter 5: Introduction to Containerization**
-
-**Abstract**
-
-This chapter introduces the main concepts of software containerization using hands on exercises using Docker the most popular containerization framework.
-
 # 5.1 Learning Outcomes
 By the end of this chapter the reader should be able to:
 - Recognize the concept of software containers.

@@ -1,9 +1,4 @@
 # **Chapter 9: Cloud Migration**
-
-**Abstract**
-
-This chapter discusses the common case of migrating (moving) to the cloud from an existing existing deployment on-premises or another cloud deployment that was deemed unsatisfactory anymore.
-
 # 9.1 Learning Outcomes
 
 By the end of this chapter the reader should be able to:
@@ -120,28 +115,30 @@ Based on the analysis, we decided to **Retain** the database component. For the 
    1. Stop the GCE instance and open its details page for editing.
    2. Go to the Access scopes section and choose &#39;Allow full access to all Cloud APIs&#39;, then save.
 
-    ![](pictures/Picture9.3.png)
+      ![](pictures/Picture9.3.png)
 
    3. Enable Cloud Resource Manager API because we&#39;re going to need it later.
    4. Open a Cloud Shell terminal to use as the control station.
    5. We&#39;ll need to refer to the project ID several times for the migration commands so it would be convenient to store it in an environment variable using the command
+
     `$ export PROJECT_ID=<your-project-id>`
+
    6. In order to allow Migrate for Anthos to use our cloud resources, we need to create a service account, grant it the required privileges, and download the key for that account in a file to be used later.
-      1. The command to create the service account is:
+       1. The command to create the service account is:
 
-         `$ gcloud iam service-accounts create <account-name> --project=$PROJECT_ID`
+          `$ gcloud iam service-accounts create <account-name> --project=$PROJECT_ID`
 
-         so if I&#39;m going to use the &#39;m4a-service-account&#39; as the name, the command should look like this
+          so if I&#39;m going to use the &#39;m4a-service-account&#39; as the name, the command should look like this
 
-        `$ gcloud iam service-accounts create m4a-service-account --project=$PROJECT_ID`
+          `$ gcloud iam service-accounts create m4a-service-account --project=$PROJECT_ID`
 
-        after the account is created, we can refer to it later using the email address with the format
+          after the account is created, we can refer to it later using the email address with the format
 
-         `<service-account-name>@<Project-ID>.iam.gserviceaccount.com`
+          `<service-account-name>@<Project-ID>.iam.gserviceaccount.com`
 
-        might as well store this value in an environment variable to make it easier to reference later. I&#39;ll name the variable m4a-sa
+          might as well store this value in an environment variable to make it easier to reference later. I&#39;ll name the variable m4a-sa
 
-         `export m4a_sa=m4a-service-account@$PROJECT_ID.iam.gserviceaccount.com` 
+          `export m4a_sa=m4a-service-account@$PROJECT_ID.iam.gserviceaccount.com` 
 
      2. We can download the key for this account into a json file using the following command
       
@@ -159,7 +156,7 @@ Based on the analysis, we decided to **Retain** the database component. For the 
     ```
    2. Download the cluster&#39;s credentials to be able to access it later:
 
-    ` $ gcloud container clusters get-credentials migration-cluster --zone us-central1-a`
+      `$ gcloud container clusters get-credentials migration-cluster --zone us-central1-a`
 
 3. Installing Migrate for Anthos on the cluster
    1. First, we&#39;ll need to grant the service account access to the container registry and the storage services by creating a policy that links the service account to the role storage.admin using the following command
@@ -174,71 +171,76 @@ Based on the analysis, we decided to **Retain** the database component. For the 
   
    3. You can check the installation using the command $migctl doctor; it may take a while before the installation is complete; just keep checking until you see the first three items with a green check. As you can see in the figure below, the source status is not configured yet. We&#39;ll take care of that in the next set of steps
 
-     ![](pictures/Picture9.4.png)
+      ![](pictures/Picture9.4.png)
 
 4. Create an m4a source object that can be linked to a GCE instance
    1. Grant the service account the ability to view the GCE instance and access its storage by creating a policy binding that connects the service account to the compute.viewer role and the compute.storageAdmin role
 
-  ```
-    $ gcloud projects add-iam-policy-binding $PROJECT_ID \
-    > --member="serviceAccount:$m4a_sa" --role="roles/compute.viewer"
-  ```
-  ```
-    $ gcloud projects add-iam-policy-binding $PROJECT_ID \
-    > --member="serviceAccount:$m4a_sa" --role="roles/compute.storageAdmin"
-  ```
-
+      ```
+        $ gcloud projects add-iam-policy-binding $PROJECT_ID \
+        > --member="serviceAccount:$m4a_sa" --role="roles/compute.viewer"
+      ```
+      ```
+        $ gcloud projects add-iam-policy-binding $PROJECT_ID \
+        > --member="serviceAccount:$m4a_sa" --role="roles/compute.storageAdmin"
+      ```
    2. Now we can create a compute engine (ce) source object using the key of the service account
-  ```  
-    $ migctl source create ce <object-name> --project $PROJECT_ID \
-    > --json-key=m4a-key.json
-  ```
-    so if I&#39;m going to name this object gce-source-obj the command should look like this:
 
-  ```
-    $ migctl source create ce gce-source-obj --project $PROJECT_ID \
-    > --json-key=m4a-key.json
-  ```
+      ```  
+        $ migctl source create ce <object-name> --project $PROJECT_ID \
+        > --json-key=m4a-key.json
+      ```
+      so if I&#39;m going to name this object gce-source-obj the command should look like this:
+
+      ```
+        $ migctl source create ce gce-source-obj --project $PROJECT_ID \
+        > --json-key=m4a-key.json
+      ```
 
    3. After the source object is create, we can see that the source status is now checked
     
-    ![](pictures/Picture9.5.png)
+      ![](pictures/Picture9.5.png)
 
 5. Create the m4a migration object that uses the source object to access our webserver instance with the intent to use it as an image for the installation
    1. The command to create the migration object is
-    ```
-      $ migctl migration create wordpress-migration \
-      > --source <name-of-source-object> --vm-id <name-of-gce> --intent Image
-    ```
+      ```
+        $ migctl migration create wordpress-migration \
+        > --source <name-of-source-object> --vm-id <name-of-gce> --intent Image
+      ```
 
-    ```
-      $ migctl migration create wordpress-migration \
-      > --source gce-source-obj --vm-id wordpress-webserver --intent Image
-    ```
+      ```
+        $ migctl migration create wordpress-migration \
+        > --source gce-source-obj --vm-id wordpress-webserver --intent Image
+      ```
+
    2. Keep checking the object&#39;s status using the command below until it&#39;s ready.
 
-    `$ migctl migration status wordpress-migration`
+      `$ migctl migration status wordpress-migration`
 
       ![](pictures/Picture9.6.png)
 
-   3. A migration plan is automatically created and ready to use. We can download it as a YAML file using the command `$ migctl migration get wordpress-migration`
+   3. A migration plan is automatically created and ready to use. We can download it as a YAML file using the command 
+   
+      `$ migctl migration get wordpress-migration`
 
-   4. If we would like to customize the migration plan, we can just edit that file then upload it to m4a using the command `$ migctl migration update wordpress-migration`
+   4. If we would like to customize the migration plan, we can just edit that file then upload it to m4a using the command 
+   
+      `$ migctl migration update wordpress-migration`
 
 6. Create the migration artifacts
    1. By asking m4a to create the artifacts based on the generated plan
    
-     `$ migctl migration generate-artifacts wordpress-migration`
+      `$ migctl migration generate-artifacts wordpress-migration`
 
    2. Again, keep checking the status until the artifacts are ready
 
-    `$ migctl migration status wordpress-migration`
+      `$ migctl migration status wordpress-migration`
 
-    ![](pictures/Picture9.7.png)
+      ![](pictures/Picture9.7.png)
 
    3. Download the generated artifacts using the following command
 
-    `$ migctl migration get-artifacts wordpress-migration`
+      `$ migctl migration get-artifacts wordpress-migration`
 
    4. The artifacts generated include the Dockerfile to create the image and a YAML (deployment\_spec.yaml) file to describe the configuration for the Kubernetes deployment and service objects
 
@@ -265,44 +267,45 @@ Based on the analysis, we decided to **Retain** the database component. For the 
    1. Execute the deployment using the `$ kubect apply -f deployment_spec.yaml`
    2. Wait for the external-ip to be generated, then send an HTTP request to it to see the new deployment
 
-    ![](pictures/Picture9.8.png)
+      ![](pictures/Picture9.8.png)
 
    3. Start the database server and send an HTTP request to the external IP address.
    4. You should be able to see the WordPress home page. However, the picture is missing, the format is off, and if you click on any link, you&#39;ll get a TIME\_OUT error as the requests from the links will be sent to the old IP address stored in the database.
 
-   ![](pictures/Picture9.9.png)
+      ![](pictures/Picture9.9.png)
 
 9. We can fix this by updating the value of the site&#39;s IP in the database. We need to access the database from a client in order to update the data. We can use the MySQL client that we installed on the wordpress-webserver instance.
    1. Start the wordpress-webserver VM instance.
    2. Open an SSH connection to the instance
    3. Connect to the DB server through the client
 
-     `$ mysql -h <ip-of-the-sql-instance> -u wordpress --password=<wordpress-client-user>`
+      `$ mysql -h <ip-of-the-sql-instance> -u wordpress --password=<wordpress-client-user>`
 
    4. Switch to the WordPress database schema
 
-     `MySQL [(none)]> use wordpress`
+      `MySQL [(none)]> use wordpress`
 
    5. Update the IP value in the wordpress.wp\_options
-    ```
-      MySQL [(wordpress)]> update wordpress.wp_options
-                                 set option_value = '<LoadBalancer IP>'
-                                 where option_name in ('siteurl','home');
-      commit;
-    ```
+    
+      ```
+        MySQL [(wordpress)]> update wordpress.wp_options
+                                  set option_value = '<LoadBalancer IP>'
+                                  where option_name in ('siteurl','home');
+        commit;
+      ```
    6. Verify that the values were updated by selecting the rows we just updated
    
       `MySQL [wordpress]> select * from wordpress.wp_options where option_name in ('siteurl','home');`
 
-  ![](pictures/Picture9.10.png)
+      ![](pictures/Picture9.10.png)
 
    7. Now, if we send a request to that IP, we should be able to see a properly functioning application.
 
-  ![](pictures/Picture9.11.png)
+      ![](pictures/Picture9.11.png)
 
 10. Since our application is now deployed on a Kubernetes cluster, we can utilize all the cool features of Kubernetes like scaling up or down the replicas, as we&#39;ve learned before. Right now, there&#39;s only one pod in the deployment, but we can scale it to any number that we want either by changing the deployment\_spec.yaml or by using the kubectl scale deployment command
 
-    `$ kubectl scale deployment wordpress-webserver-mig-test --replicas=10`
+   `$ kubectl scale deployment wordpress-webserver-mig-test --replicas=10`
 
 # 9.5 Summary
 

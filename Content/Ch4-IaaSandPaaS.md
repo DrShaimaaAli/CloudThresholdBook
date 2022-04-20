@@ -1,9 +1,5 @@
 # **Chapter4: IaaS &amp; PaaS Deployment**
 
-
-**Abstract**
-In this chapter we are going to depoly WordPress, a popular open-source blogging applicationg, using IaaS and PaaS services on GCP
-
 # 4.1 Learning Outcomes
  By the end of this chapter, the reader should be able to:
 - Identify the architectural patterns of an existing application.

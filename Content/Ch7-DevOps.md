@@ -1,12 +1,7 @@
 
 # **Chapter 7: DevOps and Cloud Deploymnets**
-
-**Abstract**
-
-In this chapter we will introduce the DevOps concepts and their implementation in cloud deployments.
-
 # 7.1 Learning Outcomes
- By the end of this chapter the reader should be able to:
+By the end of this chapter the reader should be able to:
 - Recognize the concept of DevOps
 - Recognize the concept of Continues Integration
 - Recognize the concept of Continues Delivery/Deployment
@@ -56,12 +51,14 @@ In this section, we will recreate the deployment of the hello-I-am-here applicat
 
 In chapter 6, you learned how to create a Kubernetes deployment directly through the command line, which would be sufficient for simple deployments. However, as the deployment grows in complexity, using direct commands becomes less efficient and more error-prone. Luckily, there&#39;s a more convenient way to create deployments by specifying the configuration in a [YAML](https://yaml.org/) file. In fact, YAML files can be used to create any Kubernetes objects, not just the deployments.
 
-YAML syntax includes two main structures that can be used to create any configurations we want: maps and lists. The _**map**_ is basically a key-value pair separated by a colon (:) (key: value), which corresponds to the _**property**_ in JSON format. The _**list**_, which is equivalent to the _**array**_ in JSON format, is just a list of values in separate lines, each starting with a dash, as shown below
+YAML syntax includes two main structures that can be used to create any configurations we want: maps and lists. The _**map**_ is basically a key-value pair separated by a colon (:) (key: value), which corresponds to the _**property**_ in JSON format. The _**list**_, which is equivalent to the _**array**_ in JSON format, is just a list of values in separate lines, each starting with a dash, as shown below:
+
 ```
  - value1
  - value2
  - value3
 ```
+
 The value of a map can be a simple value, one or more other maps or a list. Also, each of the values of the list can be a simple value, a map or another list. Nested structures are indicated by indentation using any number of spaces (tabs are not allowed, so be careful if you are using an editor like notepad++ as it can automatically replace 4 spaces for indentation with a tab).
 
 The YAML specifications are stored in a plain text file with the extension (.yaml), which is processed by any program that can process the syntax and recognize the map keys and values.
@@ -72,11 +69,11 @@ In our context, Kubernetesis the program that will process the YAML file, and it
 - kind – The type of object we want to create (e.g. deployment, service, pod, … etc.)
 - metadata – Contains sub-properties to identify the object, e.g. name and labels
 - spec – The actual specification of the object we are trying to create. The details of the specifications differ from object to object according to the [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/).
-  - We are going to start by creating a deployment, so we need to look at its page in the reference here: [https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/)
-  - The documentation indicated that there are two required sub-properties for the deployment&#39;s specproperty;
-    - selector, which is a criterion to filter and select the pods that belong to this deployment,
-    - template, which contains the configuration of the container(s) to be deployed. The template itself has its own spec property under which the list of containers are specified
-  - The replicas property (not required) can be used to specify the number of replicas for the deployment (defaults to 1 if omitted)
+   - We are going to start by creating a deployment, so we need to look at its page in the reference here: [https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/)
+   - The documentation indicated that there are two required sub-properties for the deployment&#39;s specproperty;
+      - selector, which is a criterion to filter and select the pods that belong to this deployment,
+      - template, which contains the configuration of the container(s) to be deployed. The template itself has its own spec property under which the list of containers are specified
+   - The replicas property (not required) can be used to specify the number of replicas for the deployment (defaults to 1 if omitted)
 
 The listing below shows an example YAML specification to create a deployment similar to the one we created in chapter 6. Please note that I added a v1 tag to the container image to be able to easily see the effect when we change the version of the application.
 
@@ -111,68 +108,66 @@ In this exercise, we&#39;ll create a cluster, a deployment and a service similar
 
 1. Let&#39;s say we don&#39;t want the user to send the name in the request anymore. If we just omit it from the querystring, the response message would print &#39;undefined,&#39; which we can consider a bug
 
-![found/introduced a bug in the application](pictures/Picture7.3.png)
+   ![found/introduced a bug in the application](pictures/Picture7.3.png)
 
-Figure 7.3: found/introduced a bug in the application
+   Figure 7.3: found/introduced a bug in the application
 
 2. To fix this bug by updating index.js file as shown in listing 7.3
 
-  ```
-  const express = require('express');
-  const os = require('os');
+    ```
+    const express = require('express');
+    const os = require('os');
 
-  const server = express();
-  server.get('/', (request, response) => 
-                  {
-                      response.send("Hello "
-                                            + " I'm here at "
-                                            +os.hostname + "\n");
-                  }
-            );
-  server.listen(8080, '0.0.0.0', () => {console.log('listening on port 8080.');});
+    const server = express();
+    server.get('/', (request, response) => 
+                    {
+                        response.send("Hello "
+                                                + " I'm here at "
+                                                +os.hostname + "\n");
+                    }
+                );
+    server.listen(8080, '0.0.0.0', () => {console.log('listening on port 8080.');});
 
-  ```
+    ```
 
-Listing 7.3: Updating the code in inde.js of the hello-i-am-here app
+   Listing 7.3: Updating the code in inde.js of the hello-i-am-here app
 
 3. Now we just need to rebuild the image; with a v2 tag to distinguish it from the previous version and push it to the registry.
 
-```
-  $ sudo docker build --tag shaimaaali/hello-from-me:v2 . 
-  $ sudo docker login -u <your_username> -p <your_password>
-  $ sudo docker push shaimaaali/hello-from-me:v2
-```  
-We should be able to see the new image in the registry
+    ```
+    $ sudo docker build --tag shaimaaali/hello-from-me:v2 . 
+    $ sudo docker login -u <your_username> -p <your_password>
+    $ sudo docker push shaimaaali/hello-from-me:v2
+    ```  
+   We should be able to see the new image in the registry
 
-![Two containerized versions of the hello-i-am-here app](pictures/Picture7.4.png)
+   ![Two containerized versions of the hello-i-am-here app](pictures/Picture7.4.png)
 
-Figure 7.4: Two containerized versions of the hello-i-am-here app
+   Figure 7.4: Two containerized versions of the hello-i-am-here app
 
 4. Start the VM instance, which has kubectl already installed docker-test-instance.
 5. This time we&#39;ll create the cluster via gcloud for a change, the command below creates a cluster named yaml-test with 2 nodes in us-central1-a
 
     `$ gcloud container clusters create yaml-test --num-nodes 2 --zone us-central1-a`
 
-After the creation of the cluster is completed, we should receive a confirmation message, as shown below.
+   After the creation of the cluster is completed, we should receive a confirmation message, as shown below.
 
-![Cluster created through command line](pictures/Picture7.5.png)
+   ![Cluster created through command line](pictures/Picture7.5.png)
 
-Figure 7.5: Cluster created through command line
+   Figure 7.5: Cluster created through command line
 
 6. Create a file with a name that ends with .yaml extension and include the specifications provided in listing 7.1.
 7. In order to create the deployment, we can use the command 
 
-`kubectl create -f <file.yaml>` 
-or 
-`kubectl apply -f <file.yaml>` 
+    `kubectl create -f <file.yaml>` or  `kubectl apply -f <file.yaml>` 
 
-here we&#39;re going to use apply since it can be used to update the configurations as well.
+   here we&#39;re going to use apply since it can be used to update the configurations as well.
 
 8. We can see in the figure below that the deployment and the pod were created as expected.
 
-![pictures/Picture7.5.png](pictures/Picture7.6.png)
+   ![pictures/Picture7.5.png](pictures/Picture7.6.png)
 
-Figure 7.6: Deployment and pod objects created using a YAML file
+   Figure 7.6: Deployment and pod objects created using a YAML file
 
 9. Now let&#39;s create a service. Just like the deployment, a service is a Kubernetes object that can be described and created using a YAML file.
 
@@ -192,22 +187,23 @@ Figure 7.6: Deployment and pod objects created using a YAML file
             - protocol: TCP
               port: 8000
               targetPort: 8080
-        ```
-Listing 7.2 Example YAML file for Kubernetes Service Object
+      ```
+      Listing 7.2 Example YAML file for Kubernetes Service Object
 
-10. Suppose we want to change anything about the objects we created. In that case, we can either change the object directly (e.g. kubectl edit deployment \&lt;deployment-name\&gt;) or edit the YAML file then re-issue the kubectl apply -f command. The first approach may seem faster ; however, it&#39;s not recommended since it&#39;d create discrepancies between the actual objects and the YAML files, so let&#39;s try the second approach and update the deployment file to scale it up by increasing the number of replicas to 10 then list the existing pods to see the effect of the change.
+10. Suppose we want to change anything about the objects we created. In that case, we can either change the object directly (e.g. `kubectl edit deployment <deployment-name>`) or edit the YAML file then re-issue the `kubectl apply -f` command. The first approach may seem faster ; however, it&#39;s not recommended since it&#39;d create discrepancies between the actual objects and the YAML files, so let&#39;s try the second approach and update the deployment file to scale it up by increasing the number of replicas to 10 then list the existing pods to see the effect of the change.
 11. We can verify that the deployment was scaled by creating 10 replicas using the kubectl get pods command
 
- ![Pod replicas created after updating and re-applying the YAML file](pictures/Picture7.7.png)
+   ![Pod replicas created after updating and re-applying the YAML file](pictures/Picture7.7.png)
 
-Figure 7.7: Pod replicas created after updating and re-applying the YAML file
+   Figure 7.7: Pod replicas created after updating and re-applying the YAML file
 
 12. Each of these pods is an object in itself, but there&#39;s another object called replicaset that encapsulate them, and we can view that object using the command
-  `$ kubectl get replicaset`
+  
+   `$ kubectl get replicaset`
 
-![Example replicaset object](pictures/Picture7.8.png)
+   ![Example replicaset object](pictures/Picture7.8.png)
 
-Figure 7.8: Example replicaset object
+   Figure 7.8: Example replicaset object
 
 What happens if we have a new version of the application and want to update the deployment? Using Kubernetes made it easy to make frequent/continuous updates just like it made it easy to deploy and scale the applications in the first place. We&#39;ll see some examples of implementing CD strategies using Kubernetes below.
 
@@ -252,6 +248,11 @@ Listing 7.4 Updated YAML deployment
 - Issue the command `kubectl apply -f test-deployment.yaml` so that the change will take place then the kubectl get replicaset command multiple times to see the gradual rolling update while it&#39;s happening, as shown in the figure.
    1. It starts by creating a new replicaset with some replicas that contain the new version.
    2. Gradually shutdown the replicas with the old version as new replicas become ready.
+      
+      ![Rolling Deployment Update with Kubernetes](pictures/Picture7.10.png)
+
+      Figure 7.10: Rolling Deployment Update with Kubernetes
+
    3. If you send requests to the service while the rolling is taking place, you may get different responses (i.e. from different versions) as replicas of both versions are still running.
    4. You can pause and resume the rollout using the commands
 
@@ -265,13 +266,11 @@ Listing 7.4 Updated YAML deployment
 
         And you&#39;ll see the number of replicas in the old replicaset (with the old version) gradually increasing while the number of replicas in the new replicaset will gradually decrease.
 
-   6. Let&#39;s delete this deployment as a clean-up step before we look at the next strategy using the `kubectl delete deployment <deployment-name>` command
+   6. Let&#39;s delete this deployment as a clean-up step before we look at the next strategy using the command 
+   
+      `kubectl delete deployment <deployment-name>`
+
    7. We don&#39;t have to delete or recreate the service as it can still be used with the new deployments that we&#39;ll create in the next exercise.
-
-![Rolling Deployment Update with Kubernetes](pictures/Picture7.10.png)
-
-Figure 7.10: Rolling Deployment Update with Kubernetes
-
 ## 7.3.3 Canary Deployment Strategy
 
 The Canary deployment strategy is similar to the rolling deployment in that both would gradually replace the old version while monitoring the behaviour of the new version. However, you can have more control over the gradual update with the canary deployment.
@@ -345,9 +344,9 @@ In the following exercise, we&#39;ll practice creating a canary deployment to up
 
 3. After creating the new deployments, we can see that the old service is still able to direct requests to replicas in both deployments, and we can experiment with the new version to make sure that everything is going as expected and make adjustments as we see fit until we are entirely comfortable with eliminating the old version altogether.
 
-![Example Canary Deployment using Kubernetes](pictures/Picture7.11.png)
+   ![Example Canary Deployment using Kubernetes](pictures/Picture7.11.png)
 
-Figure 7.11: Example Canary Deployment using Kubernetes
+   Figure 7.11: Example Canary Deployment using Kubernetes
 
 ## 7.3.4 Blue-Green Deployment Strategy
 
