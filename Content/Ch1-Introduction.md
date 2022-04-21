@@ -236,6 +236,9 @@ In this book, we&#39;ll practice accessing cloud resources programmatically thro
 
 In this chapter, we introduced the concept of cloud computing and how it came about. We also reviewed the standard definition of cloud computing by the [National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf). We also discussed the value propositions of cloud services and what caused the rising cloud adoption trends. Finally, we had the first glimpse at Google Cloud Platform (GCP) and prepared the environments for the hands-on exercises in the coming chapters.
 
+# Relevant lab\(s\) on Qwicklabs 
+
+- [Compute Engine: Qwik Start - Windows](https://www.cloudskillsboost.google/focuses/560?parent=catalog)
 # Image Credits
 
 [1] [&quot;Google Data Center - The Dalles, Oregon&quot;](https://www.flickr.com/photos/87296837@N00/17832143871) by [Tony Webster](https://www.flickr.com/photos/87296837@N00) is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&amp;atype=rich)

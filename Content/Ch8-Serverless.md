@@ -316,7 +316,8 @@ Now that we have the contents ready, we can use the &#39;Cloud Build&#39; servic
 - Open a command-line terminal and step inside that directory.
 - Submit the contents to be used for the container image using the following command
 
-- \&gt; gcloud builds submit --tag gcr.io/ **\&lt;Project-ID\&gt;** /hello-i-am-here
+ `> gcloud builds submit --tag gcr.io/<Project-ID>/hello-i-am-here`
+
 - If you go back to the repositories list, you should be able to see that a repository was created with the Docker image inside of it. 
 
 ![hello-i-am-here image created](pictures/Picture8.32.png)
@@ -558,6 +559,9 @@ See if you can deploy the email subscription app with its two microservices usin
 
 In this chapter, we discussed serverless deployment options. We practiced using two of the serverless services on GCP, namely, &#39;Google Cloud Functions&#39;, which allows us to create serverless functions, &#39;Google Run&#39;, which allows us to create serverless containers deployments, and &#39;App engine&#39; which allows us to create complete applications in a serverless fashion. In addition to that, we also practiced working with the Cloud Build service, which allows us to build and submit/push Docker containers to GCP&#39;s containers register.
 
+# Relevant lab\(s\) on Qwicklabs 
+- [Build a Serverless App with Cloud Run that Creates PDF Files](https://www.cloudskillsboost.google/focuses/8390?parent=catalog)
+- [Serverless Cloud Run Development: Challenge Lab](https://www.qwiklabs.com/focuses/14744?catalog_rank=%7B%22rank%22%3A30%2C%22num_filters%22%3A2%2C%22has_search%22%3Afalse%7D&parent=catalog)
 # Image Credits
 
 [GCP Screenshots] &quot;Google and the Google logo are registered trademarks of Google LLC, used with permission.&quot;Unless otherwise stated, all images in this chapter were created by the author Shaimaa Ali using either MS PowerPoint or MS Visio or both. Code screenshot made using MS VSCode.

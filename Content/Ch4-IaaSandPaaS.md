@@ -282,6 +282,10 @@ As mentioned before, the current security settings are not secure enough. We nee
 # 4.7 Summary
 In this chapter, we deployed a real open-source web application using the IaaS and PaaS deployment options. We started by creating the deployment plan, then followed the plan step by step until we had the application up and running. The exercise was an opportunity to have a general sense on how cloud applications are deployed and to understand the difference between IaaS and PaaS as deployment options.
 
+# Relevant lab\(s\) on Qwicklabs
+
+- [Hosting a Web App on Google Cloud Using Compute Engine](https://www.cloudskillsboost.google/focuses/11952?parent=catalog)
+
 # Image Credits
 [GCP Screenshots] &quot;Google and the Google logo are registered trademarks of Google LLC, used with permission.&quot;Unless otherwise stated, all Images in this chapter created by the author Shaimaa Ali using either MS PowerPoint or MS Visio or both.
 

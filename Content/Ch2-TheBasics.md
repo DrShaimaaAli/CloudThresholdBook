@@ -373,6 +373,8 @@ In this chapter, we discussed the following:
 - Provision and access virtualized compute resources by creating VM instances.
 - Provision and access virtualized storage resources by creating virtual disk drives.
 
+# Relevant lab\(s\) on Qwicklabs 
+- [Hosting a Web App on Google Cloud Using Compute Engine](https://www.cloudskillsboost.google/focuses/11952?parent=catalog)
 # Image Credits
 
 [1] [Image](https://commons.wikimedia.org/wiki/File:AWS_Simple_Icons_Storage_Amazon_S3.svg) courtesy of Amazon Web Services LLC in the Public Domain , modified by the author using PowerPoint.

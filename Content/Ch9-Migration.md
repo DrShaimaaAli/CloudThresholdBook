@@ -311,6 +311,8 @@ Based on the analysis, we decided to **Retain** the database component. For the 
 
 In this chapter, we discussed the concepts related to cloud migration, including the general process and the common strategies used for different systems. For the Hands-On component of the chapter, we migrated the WordPress application that we deployed in chapter 4 to a Kubernetes cluster using migctl tool.
 
+# Relevant lab\(s\) on Qwicklabs 
+- [Migrate for Anthos: Qwik Start](https://www.qwiklabs.com/focuses/10268?parent=catalog)
 # Image Credits
 
 [GCP Screenshots] &quot;Google and the Google logo are registered trademarks of Google LLC, used with permission.&quot;

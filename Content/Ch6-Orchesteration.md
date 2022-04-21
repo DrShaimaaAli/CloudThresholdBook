@@ -195,6 +195,9 @@ In the following set of steps, we will create a **deployment** and look into the
 
 In this chapter, we learned the basics of container-based deployment using the most popular container orchestrator Kubernetes.
 
+# Relevant lab\(s\) on Qwicklabs 
+
+- [Orchestrating the Cloud with Kubernetes](https://www.qwiklabs.com/focuses/557?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog)
 # Image Credits
 
 [1] [Image](https://commons.wikimedia.org/wiki/File:Wikibase_RL_dependency_graph_new.png) by [Amir Sarabadani (WMDE)](https://commons.wikimedia.org/wiki/User:Amir_Sarabadani_(WMDE)) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en). 

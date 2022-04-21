@@ -359,7 +359,10 @@ Figure 7.12: Blue-Green Deployment Strategy
 # 7.5 Summary
 
 In this chapter, we introduced the DevOps approach of managing the IT/Maintainance cycle as opposed to the traditional approach. We also described the continuous integration/continuous deployment (CI/CD) pipelines and how cloud computing contributed to the DevOps culture&#39;s popularity. Finally, we described three popular CD strategies with example implementations using GKE.
+# Relevant lab\(s\) on Qwicklabs 
 
+- [Implement DevOps in Google Cloud: Challenge Lab](https://www.qwiklabs.com/focuses/13287?catalog_rank=%7B%22rank%22%3A9%2C%22num_filters%22%3A1%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=15017341)
+- [Deploy to Kubernetes in Google Cloud: Challenge Lab](https://www.qwiklabs.com/focuses/10457?parent=catalog)
 # Image Credits
 
 Unless otherwise stated, all images in this chapter were created by the author Shaimaa Ali using either MS PowerPoint or MS Visio or both. Code screenshot made using MS VSCode.

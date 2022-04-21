@@ -310,6 +310,9 @@ Now let&#39;s push the image to docker-hub so that we can use it in the next cha
 # 5.5 Summary
 In this chapter, we touched upon the basics of containerization with introductory hands-on exercises to understand the basics that would give you enough foundation to help you dive more deeply into the subject if you choose to. We started by explaining the concept of the container and how it is used to facilitate the software development process by encapsulating the program and all its dependencies into one unit that&#39;s easy to ship and deploy. Then we introduced the popular containerization framework &#39;Docker&#39; with hands-on exercises.
 
+# Relevant lab\(s\) on Qwicklabs
+
+- [Introduction to Docker](https://www.cloudskillsboost.google/focuses/1029?parent=catalog)
 # Image Credits
 [1][Image](https://commons.wikimedia.org/wiki/File:A_graph_containing_all_installed_Haskell_packages.svg) by [Adam majewski](https://commons.wikimedia.org/wiki/User:Adam_majewski), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) \&lt; \&gt;, via Wikimedia Commons 
 
