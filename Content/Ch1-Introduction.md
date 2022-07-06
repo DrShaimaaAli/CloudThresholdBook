@@ -248,6 +248,9 @@ In this chapter, we introduced the concept of cloud computing and how it came ab
 
 ## 1.10.2 Hands-On
 
+[![HandsOn 1](https://img.youtube.com/vi/xFOMpcg--2c/0.jpg)](https://www.youtube.com/watch?v=xFOMpcg--2c)
+[![HandsOn 2](https://img.youtube.com/vi/yJNTZoBs6jg/0.jpg)](https://www.youtube.com/watch?v=yJNTZoBs6jg)
+[![HandsOn 3](https://img.youtube.com/vi/_s2qNuzUWvg/0.jpg)](https://www.youtube.com/watch?v=_s2qNuzUWvg)
 
 # Relevant lab\(s\) on Qwicklabs 
 
