@@ -176,7 +176,7 @@ Figure 3.9: Pipe-Filter Architecture
 
 The pipe-filter architecture is commonly used in data since applications with each filter representing a data analysis functionality that applies on the data stream before being placed in the pipe for the analysis functionality in the next filter to consume.
 
-## 3.5 Architecture Design for Cloud Applications
+## 3.5 Summary
 
 In summary, creating an architecture for a cloud-based application would involve answering the following questions:
 
