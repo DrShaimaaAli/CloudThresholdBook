@@ -356,7 +356,7 @@ In the blue-green strategy, the old deployment would be labelled &#39;blue&#39; 
 
 Figure 7.12: Blue-Green Deployment Strategy
 
-# 7.5 Summary
+# 7.4 Summary
 
 In this chapter, we introduced the DevOps approach of managing the IT/Maintainance cycle as opposed to the traditional approach. We also described the continuous integration/continuous deployment (CI/CD) pipelines and how cloud computing contributed to the DevOps culture&#39;s popularity. Finally, we described three popular CD strategies with example implementations using GKE.
 # Relevant lab\(s\) on Qwicklabs 
