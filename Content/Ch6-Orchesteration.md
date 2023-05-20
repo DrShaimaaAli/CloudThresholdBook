@@ -12,7 +12,7 @@ By the end of this chapter the reader should be able to:
 - Create a Kubernetes cluster.
 - Deploy containerized applications to Kubernetes clusters.
 
-# 6.1 Container Orchestration
+# 6.2 Containers Orchestration
 
 Once the container is in a registry, it can be deployed to any environment without worrying about the dependencies. Simple deployment can be done by installing docker in the production environment. More sophisticated deployments, including auto-scaling and replication, would require a container orchestrator like Kubernetes.
 
@@ -24,7 +24,7 @@ Can you imagine creating all the needed instances one by one, installing docker,
 
 Thanks to container orchestrators&#39; existence, you don&#39;t have to do all of that manually; the orchestrator automates all these tasks for us and more.
 
-# 6.2 Kubernetes Concepts and Building Blocks
+# 6.3 Kubernetes Concepts and Building Blocks
 
 Kubernetes is the most popular container orchestrator. Google created it as an enhancement of its predecessor [Borg](https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/)that they used internally for several years.
 
@@ -50,11 +50,11 @@ Here are the main concepts we need to understand to be able to work with Kuberne
 
 Kubernetes itself is a software framework that can be installed and run on any computer system, so it&#39;s not specific to the cloud; however, the flexibility and elasticity available on cloud platforms make the orchestration job much more efficient. Several cloud providers, including GCP, provide services to automatically provision the needed instances with the all the required platforms like Kubernetes and Docker already installed. That&#39;s why I like to argue that Kubernetes services are just a special type of PaaS.
 
-# 6.3 Example container deployment using Kubernetes
+# 6.4 Example container deployment using Kubernetes
 
 Let&#39;s understand how container orchestration using Kubernetes works through a hands-on exercise.
 
-## 6.3.1 Creating a cluster
+## 6.4.1 Creating a cluster
 
 1. Go to GCP console.
 2. In the navigation menu, click on &#39;Kubernetes Engine&#39;.
@@ -111,7 +111,7 @@ Let&#39;s understand how container orchestration using Kubernetes works through 
 
 We are now ready to deploy our &#39;hello-from-me&#39; containerized app and see what it would look like on the cluster.
 
-## 6.3.2 Deploying the container to the cluster
+## 6.4.2 Deploying the container to the cluster
 
 In the following steps, we will prepare the environment needed for Kubernetes deployment by installing and configuring kubectl.
 
@@ -191,7 +191,7 @@ In the following set of steps, we will create a **deployment** and look into the
 
    Figure 6.18: The Load Balancer directs the requests to the replicas
 
-# 6.4 Summary
+# 6.5 Summary
 
 In this chapter, we learned the basics of container-based deployment using the most popular container orchestrator Kubernetes.
 
