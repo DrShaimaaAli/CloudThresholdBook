@@ -1,5 +1,5 @@
 # **Chapter 8: Serverless Deployments**
-# 7.1 Learning Outcomes
+# 8.1 Learning Outcomes
 By the end of this chapter the reader should be able to:
 - Identify the concept of &#39;Serverless Deployments&#39;.
 - Identify the concept of &#39;Serverless Functions&#39;.
